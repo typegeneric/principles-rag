@@ -1,9 +1,18 @@
 "use client";
+
 import { PromptInputArea } from "@/features/ai-chat/components/prompt-input-area";
+import { hono } from "@/lib/hono.client";
 
 export function AiChatPageContent() {
-  const handleSubmit = (question: string) => {
-    alert(`You asked: ${question}`);
+  const handleSubmit = async (question: string) => {
+    const res = await hono.api.ask.$post({ json: { question } });
+
+    if (res.ok) {
+      const data = await res.json();
+      alert(data.answer);
+    } else {
+      alert("Failed to get answer");
+    }
   };
 
   return (

@@ -13,7 +13,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import UserMenu from "@/components/user-menu";
 
 // Navigation links array
 const navigationLinks = [
@@ -22,7 +21,7 @@ const navigationLinks = [
 
 export function Navbar() {
   return (
-    <header className="border-b px-4 md:px-6">
+    <header className="sticky top-0 z-10 border-b bg-background px-4 md:px-6">
       <div className="flex h-16 items-center justify-between gap-4">
         {/* Left side */}
         <div className="flex flex-1 items-center gap-2">
@@ -123,8 +122,7 @@ export function Navbar() {
 
         {/* Right side: Actions */}
         <div className="flex flex-1 items-center justify-end gap-4">
-          {/* User menu */}
-          <UserMenu />
+          <span className="sr-only">Nothing here</span>
         </div>
       </div>
     </header>

@@ -11,18 +11,22 @@ import {
 
 type Props = {
   onSubmit?: (question: string) => void;
+  isAsking?: boolean;
 };
 
 export function PromptInputArea({
   onSubmit = (question) => alert(`You asked: ${question}`),
+  isAsking = false,
 }: Props) {
   const [question, setQuestion] = useState("");
 
   const handleSubmit = () => {
-    if (onSubmit) {
-      onSubmit(question);
+    if (!question.trim()) {
       return;
     }
+
+    onSubmit?.(question);
+    setQuestion("");
   };
 
   return (
@@ -33,14 +37,15 @@ export function PromptInputArea({
         </PromptInputAttachments>
         <PromptInputTextarea
           onChange={(e) => setQuestion(e.target.value)}
+          placeholder="Type your message..."
           value={question}
         />
       </PromptInputBody>
       <PromptInputToolbar>
         <PromptInputSubmit
           className="ms-auto"
-          disabled={false}
-          status={"ready"}
+          disabled={isAsking}
+          status={isAsking ? "streaming" : "ready"}
         />
       </PromptInputToolbar>
     </PromptInput>

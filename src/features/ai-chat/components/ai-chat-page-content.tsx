@@ -56,7 +56,7 @@ export function AiChatPageContent() {
   };
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col w-full">
       <div className="flex flex-1 flex-col p-4">
         <Conversation className="flex flex-1 flex-col">
           <ConversationContent className="flex-1 overflow-y-auto">

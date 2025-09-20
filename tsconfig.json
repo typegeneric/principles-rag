@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@server/*": ["./server/*"]
     },
     "types": ["./cloudflare-env.d.ts", "node"],
     "strictNullChecks": true
